@@ -51,9 +51,14 @@ Context:
     chain_type_kwargs = {"prompt": prompt}
     # TODO temperatureを変更してみましょう
     # TODO gpt-3.5-turboの挙動も確認してみましょう
-    indexqa = RetrievalQA.from_chain_type(llm=ChatOpenAI(temperature=0, model_name="gpt-4"), chain_type="stuff", retriever=retriever, chain_type_kwargs=chain_type_kwargs)
+    qa = RetrievalQA.from_chain_type(
+        llm=ChatOpenAI(temperature=0, model_name="gpt-4"),
+        chain_type="stuff",
+        retriever=retriever,
+        chain_type_kwargs=chain_type_kwargs,
+    )
     question = "どの端末から入力できますか？それと、クラウド上にあるデータはダウンロードすることができますか？"
     # TODO 学習データに存在しない答えについてテストしてみましょう
     # question = "ペアケアについて教えて下さい"
-    answer = indexqa.run(question)
+    answer = qa.run(question)
     print(answer)
