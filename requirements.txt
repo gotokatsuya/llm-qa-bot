@@ -1,0 +1,7 @@
+openai
+numpy
+backoff
+langchain
+chromadb
+pandas
+faiss-cpu
